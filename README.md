@@ -14,3 +14,5 @@ Download apk:
 - Built-in System Equalizer
 - Audio Booster or Audio Amplifier
 - Custom Themes
+
+For Feedback or Suggestions Mail Me At huynhtrongduc01225445811@gmail.com 
