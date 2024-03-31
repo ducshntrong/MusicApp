@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Splash Screen-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/white"/>
+    <item android:drawable="@drawable/music_player_icon_splash"
+        android:gravity="center"/>
+</layer-list>
