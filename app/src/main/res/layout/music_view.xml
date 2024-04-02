@@ -1,56 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="75dp"
+    android:padding="4dp"
+    android:background="#DAD9D9">
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgMusicView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/music_player_icon_splash" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:padding="4dp"
-        android:background="#DAD9D9">
+    <TextView
+        android:id="@+id/songName"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_toEndOf="@id/imgMusicView"
+        android:layout_toStartOf="@id/songDuration"
+        android:text="@string/song_name"
+        android:textColor="@color/black"
+        android:layout_marginStart="5dp"
+        android:gravity="center_vertical"
+        android:textStyle="bold"
+        android:singleLine="true"/>
 
+    <TextView
+        android:id="@+id/songArtist"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_toEndOf="@id/imgMusicView"
+        android:layout_toStartOf="@id/songDuration"
+        android:text="@string/artist"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_vertical"
+        android:singleLine="true"/>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imgMusicView"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/music_player_icon_splash" />
-
-        <TextView
-            android:id="@+id/songName"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:layout_toEndOf="@id/imgMusicView"
-            android:layout_toStartOf="@id/songDuration"
-            android:text="@string/song_name"
-            android:textColor="@color/black"
-            android:layout_marginStart="5dp"
-            android:gravity="center_vertical"
-            android:textStyle="bold"
-            android:singleLine="true"/>
-
-        <TextView
-            android:id="@+id/songArtist"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_toEndOf="@id/imgMusicView"
-            android:layout_toStartOf="@id/songDuration"
-            android:text="@string/artist"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center_vertical"
-            android:singleLine="true"/>
-
-        <TextView
-            android:id="@+id/songDuration"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:text="@string/start_tv"
-            android:layout_alignParentEnd="true"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:layout_marginHorizontal="5dp"/>
-    </RelativeLayout>
-</androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/songDuration"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:text="@string/start_tv"
+        android:layout_alignParentEnd="true"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_marginHorizontal="5dp"/>
+</RelativeLayout>
