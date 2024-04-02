@@ -15,7 +15,6 @@ Download apk: https://www.mediafire.com/file/96uffgq54zeymth/MusicApp.apk/file
     <td><img src="screenshots/img2.jpg"/></td>
     <td><img src="screenshots/img3.jpg"/></td>
   </tr>
-  
    <tr>
       <th></th>
       <th></th>
@@ -28,7 +27,6 @@ Download apk: https://www.mediafire.com/file/96uffgq54zeymth/MusicApp.apk/file
       <td><img src="screenshots/img6.jpg"/></td>
       <td><img src="screenshots/img7.jpg"/></td>
     </tr>
-    
     <tr>
       <th></th>
       <th></th>
@@ -41,7 +39,6 @@ Download apk: https://www.mediafire.com/file/96uffgq54zeymth/MusicApp.apk/file
       <td><img src="screenshots/img10.jpg"/></td>
       <td><img src="screenshots/img11.jpg"/></td>
     </tr>
-  
     <tr>
       <th></th>
       <th></th>
