@@ -2,6 +2,59 @@
 Simple music listening application
 # Preview
 Download apk: 
+
+<table style="width:100%">
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><img src="screenshots/img16.jpg"/></td>
+    <td><img src="screenshots/img1.jpg"/></td>
+    <td><img src="screenshots/img2.jpg"/></td>
+    <td><img src="screenshots/img3.jpg"/></td>
+  </tr>
+  
+ <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><img src="screenshots/img4.jpg"/></td>
+    <td><img src="screenshots/img5.jpg"/></td>
+    <td><img src="screenshots/img6.jpg"/></td>
+    <td><img src="screenshots/img7.jpg"/></td>
+  </tr>
+  
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><img src="screenshots/img8.jpg"/></td>
+    <td><img src="screenshots/img9.jpg"/></td>
+    <td><img src="screenshots/img10.jpg"/></td>
+    <td><img src="screenshots/img11.jpg"/></td>
+  </tr>
+
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><img src="screenshots/img12.jpg"/></td>
+    <td><img src="screenshots/img13.jpg"/></td>
+    <td><img src="screenshots/img14.jpg"/></td>
+    <td><img src="screenshots/img15.jpg"/></td>
+
+  </tr>
 # Features
 - Play/Pause Audio Using EarPhones
 - Play Next Feature (i.e. Now You Can Schedule Upcoming Songs)
