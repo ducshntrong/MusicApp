@@ -11,7 +11,7 @@ Download apk:
     <th></th>
   </tr>
   <tr>
-    <td><img src="screenshots/img16.jpg"/></td>
+    <td><img src="screenshots/img14.jpg"/></td>
     <td><img src="screenshots/img1.jpg"/></td>
     <td><img src="screenshots/img2.jpg"/></td>
     <td><img src="screenshots/img3.jpg"/></td>
@@ -51,9 +51,6 @@ Download apk:
   <tr>
     <td><img src="screenshots/img12.jpg"/></td>
     <td><img src="screenshots/img13.jpg"/></td>
-    <td><img src="screenshots/img14.jpg"/></td>
-    <td><img src="screenshots/img15.jpg"/></td>
-
   </tr>
 # Features
 - Play/Pause Audio Using EarPhones
