@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Activity.MainActivity">
 
@@ -22,6 +23,7 @@
                 android:orientation="horizontal">
 
                 <!--textAllCaps: chỉ định chữ hoa, thường-->
+
                 <Button
                     android:id="@+id/btn_shuffle"
                     style="@style/Widget.AppCompat.Button.Borderless"
@@ -76,6 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scrollbarThumbVertical="@drawable/scroll_bar_ic"
+                tools:listitem="@layout/music_view"
                 android:scrollbars="vertical" />
         </LinearLayout>
 
@@ -87,7 +90,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:name="com.example.musicplayer.NowPlayingFragment"
-            tools:layout="@layout/fragment_now_playing"/>
+            tools:layout="@layout/fragment_now_playing"
+            android:layout_margin="7dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView

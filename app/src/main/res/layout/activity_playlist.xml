@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_player"
     tools:context=".Activity.PlaylistActivity">
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -30,9 +31,10 @@
             android:layout_height="match_parent"
             android:contentDescription="@string/playlist_btn"
             android:gravity="center"
-            android:text="@string/playlist_name"
+            android:text="@string/playlist_btn"
             android:textColor="@color/white"
             android:textSize="25dp"
+            android:layout_marginEnd="25dp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -52,10 +54,10 @@
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="?attr/themeColor"
         app:icon="@drawable/add_ic"
         app:iconSize="35dp"
-        app:iconTint="?attr/themeColor"
+        app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"

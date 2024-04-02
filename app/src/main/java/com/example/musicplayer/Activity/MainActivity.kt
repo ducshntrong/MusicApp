@@ -229,13 +229,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun filterListMusic(query: String?) {
-        if (query != null){
-            filteredListMA = ArrayList<Music>()
-            for (i in MusicListMA){
-                if (i.title.contains(query, ignoreCase = true))
-                    filteredListMA.add(i)
-            }
-            search = true //sau khi search thì set thành true
+        filteredListMA = ArrayList()
+        if(query != null){
+            val userInput = query.lowercase()
+            for (song in MusicListMA)
+                if(song.title.lowercase().contains(userInput))
+                    filteredListMA.add(song)
+            search = true
             musicAdapter.setListMusic(filteredListMA)
             binding.rvSong.adapter = musicAdapter
         }

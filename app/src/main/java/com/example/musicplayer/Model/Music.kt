@@ -1,6 +1,9 @@
 package com.example.musicplayer.Model
 
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.media.MediaMetadataRetriever
+import android.widget.ImageButton
 import com.example.musicplayer.Activity.FavouriteActivity
 import com.example.musicplayer.Activity.PlayerActivity
 import java.io.File
@@ -97,4 +100,18 @@ fun checkPlaylist(playlist: ArrayList<Music>): ArrayList<Music> {
         }
     }
     return filteredPlaylist
+}
+
+//tham số clickHandler kiểu () -> Unit cho hàm applyClickAnimation.
+// Điều này cho phép chúng ta truyền một xử lý sự kiện riêng cho mỗi nút.
+fun applyClickAnimation(button: ImageButton, clickHandler: () -> Unit) {
+    val clickAnimation = ObjectAnimator.ofPropertyValuesHolder(
+        button,
+        PropertyValuesHolder.ofFloat("scaleX", 0.9f, 1.0f),
+        PropertyValuesHolder.ofFloat("scaleY", 0.9f, 1.0f)
+    )
+    button.setOnClickListener {
+        clickAnimation.start()
+        clickHandler.invoke()
+    }
 }

@@ -3,6 +3,7 @@ package com.example.musicplayer.Activity
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.*
+import android.database.Cursor
 import android.graphics.Color
 import android.media.AudioManager
 import android.media.MediaPlayer
@@ -10,6 +11,7 @@ import android.media.audiofx.AudioEffect
 import android.net.Uri
 import android.os.Bundle
 import android.os.IBinder
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.animation.LinearInterpolator
 import android.widget.SeekBar
@@ -49,6 +51,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
     }
 
     lateinit var bundle: Bundle
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(MainActivity.currentTheme[MainActivity.themeIndex])
@@ -62,14 +65,27 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
         rotationAnimator.interpolator = LinearInterpolator()
         rotationAnimator.start()
 
-        initializeLayout()//khởi tạo Bố cục
+        if (intent.data?.scheme.contentEquals("content")){
+            val intentService = Intent(this, MusicService::class.java)
+            bindService(intentService, this, BIND_AUTO_CREATE)//Tham số BIND_AUTO_CREATE chỉ định rằng dịch vụ sẽ được tạo nếu nó chưa tồn tại.
+            startService(intentService)
+            musicListPA = ArrayList()
+            musicListPA.add(getMusicDetails(intent.data!!))
+            Glide.with(this)
+                .load(getImgAri(musicListPA[songPosition].path))
+                .apply(RequestOptions().placeholder(R.drawable.music_player_icon_splash).centerCrop())
+                .into(binding.imgSong)
+            binding.tvSongName.text = musicListPA[songPosition].title
+        }
+        else initializeLayout()//khởi tạo Bố cục
+
         binding.btnPausePlay.setOnClickListener {
             if (isPlaying) pauseMusic()
             else playMusic()
         }
 
-        binding.btnNext.setOnClickListener { nextPreviousSong(true) }
-        binding.btnPreviou.setOnClickListener { nextPreviousSong(false) }
+        applyClickAnimation(binding.btnNext){nextPreviousSong(true)}
+        applyClickAnimation(binding.btnPreviou){nextPreviousSong(false)}
         binding.imgBtnBack.setOnClickListener { finish() }
 
         //sẽ đặt trình nghe khi nhấp chuột trên thanh seekbar để thay đổi tiến trình của seekbar khi người dùng tương thích với nó.
@@ -80,6 +96,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
                 //sd phương thức seekTo(progress) để di chuyển đến thời điểm đã kéo đến trên SeekBar.
                 if (fromUser) musicService!!.mediaPlayer?.seekTo(progress)
             }
+
             //Phương thức này được gọi khi người dùng bắt đầu chạm vào SeekBar
             //k thực hiện bất kỳ hành động nào, do đó chỉ cần để nó trống và trả về Unit
             override fun onStartTrackingTouch(seekBar: SeekBar?) = Unit
@@ -87,17 +104,17 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
             override fun onStopTrackingTouch(seekBar: SeekBar?) = Unit
         })
 
-        binding.btnRepeatPA.setOnClickListener {
+        applyClickAnimation(binding.btnRepeatPA){
             if (!repeat){
                 repeat = true
-                binding.btnRepeatPA.setColorFilter(ContextCompat.getColor(this, R.color.purple_500))
+                binding.btnRepeatPA.setColorFilter(ContextCompat.getColor(this, R.color.cool_pink))
             }else{
                 repeat = false
-                binding.btnRepeatPA.setColorFilter(ContextCompat.getColor(this, R.color.cool_pink))
+                binding.btnRepeatPA.setColorFilter(ContextCompat.getColor(this, R.color.white))
             }
         }
 
-        binding.btnEqualizerPA.setOnClickListener {
+        applyClickAnimation(binding.btnEqualizerPA){
             try {
                 //Intent được tạo để mở cài đặt bộ điều chỉnh âm thanh (Equalizer) cho phiên bản âm thanh đang phát
                 val eqIntent = Intent(AudioEffect.ACTION_DISPLAY_AUDIO_EFFECT_CONTROL_PANEL)
@@ -110,7 +127,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
                 Toast.makeText(this, "Equalizer Feature not Supported!!", Toast.LENGTH_SHORT).show()}
         }
 
-        binding.btnTimerPA.setOnClickListener {
+        applyClickAnimation(binding.btnTimerPA){
             //Biến timer sẽ là true nếu ít nhất 1 trong 3 biến min15, min30, min60 có gtri là true.
             val timer = min15 || min30 || min60
             //ktra nếu timer là false, tức là k có bộ đếm tgian nào được thiết lập, thì showBottomSheetDialog() được gọi
@@ -129,7 +146,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
                         min30 = false
                         min60 = false
                         binding.btnTimerPA.setColorFilter(ContextCompat.getColor(this@PlayerActivity,
-                            R.color.cool_pink
+                            R.color.white
                         ))
                     }
                     setCancelable(true)
@@ -141,7 +158,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
             }
         }
 
-        binding.btnSharePA.setOnClickListener {
+        applyClickAnimation(binding.btnSharePA) {
             val shareIntent = Intent() //tạo đối dượng Intent
             shareIntent.action = Intent.ACTION_SEND //gán hành động mục đích của intent là chia sẻ.
             shareIntent.type = "audio/*" //chỉ định rằng dữ liệu sẽ được chia sẻ là âm thanh.
@@ -165,13 +182,30 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
             }else{
                 isFavourite = true
                 binding.imgBtnFav.setImageResource(R.drawable.favorite_ic)
-                binding.imgBtnFav.setColorFilter(ContextCompat.getColor(this, R.color.cool_pink))
+                binding.imgBtnFav.setColorFilter(ContextCompat.getColor(this, R.color.white))
                 FavouriteActivity.MusicListFav.add(musicListPA[songPosition])
                 Snackbar.make(
                     findViewById(android.R.id.content),
                     "Song saved",
                     Snackbar.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    private fun getMusicDetails(contentUri: Uri): Music {
+        var cursor: Cursor? = null
+        try {
+            val projection = arrayOf(MediaStore.Audio.Media.DATA, MediaStore.Audio.Media.DURATION)
+            cursor = this.contentResolver.query(contentUri, projection, null, null, null)
+            val dataColumn = cursor?.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA)
+            val durationColumn = cursor?.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION)
+            cursor!!.moveToFirst()
+            val path = dataColumn?.let { cursor.getString(it) }
+            val duration = durationColumn?.let { cursor.getLong(it) }!!
+            return Music("Unknown", path.toString(), "Unknown", "Unknown", duration,
+            path.toString(), "Unknown")
+        }finally {
+            cursor?.close()
         }
     }
 
@@ -272,11 +306,11 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
         binding.tvArtist.text = musicListPA[songPosition].artist
         binding.tvSeekBarEnd.text = formatDuration(musicListPA[songPosition].duration)
         if (repeat) binding.btnRepeatPA.setColorFilter(ContextCompat.getColor(this,
-            R.color.purple_500
+            R.color.cool_pink
         ))
         //nếu 1 trong 3 bộ đếm còn thiết lập(true) thì set màu icon là màu tím
         if (min15 || min30 || min60) binding.btnTimerPA.setColorFilter(ContextCompat.getColor(this,
-            R.color.purple_500
+            R.color.cool_pink
         ))
 
         if (isFavourite) binding.imgBtnFav.setImageResource(R.drawable.favorite_ic)
@@ -383,7 +417,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
         //đóng app sau 1 tgian nhất định
         bottomSheetBinding.min15.setOnClickListener {
             Toast.makeText(baseContext, "Music will stop after 15 minutes", Toast.LENGTH_SHORT).show()
-            binding.btnTimerPA.setColorFilter(ContextCompat.getColor(this, R.color.purple_500))
+            binding.btnTimerPA.setColorFilter(ContextCompat.getColor(this, R.color.cool_pink))
             // gán gtri true cho biến min15, để đánh dấu rằng bộ đếm thời gian 15 phút đã được thiết lập.
             min15 = true
             //1 luồng (thread) mới được tạo bằng cách sử dụng Thread và Thread.sleep()
@@ -396,7 +430,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
         }
         bottomSheetBinding.min30.setOnClickListener {
             Toast.makeText(baseContext, "Music will stop after 30 minutes", Toast.LENGTH_SHORT).show()
-            binding.btnTimerPA.setColorFilter(ContextCompat.getColor(this, R.color.purple_500))
+            binding.btnTimerPA.setColorFilter(ContextCompat.getColor(this, R.color.cool_pink))
             min30 = true
             Thread{Thread.sleep((30*60000).toLong())
             if (min30) exitApp() }.start()
@@ -404,7 +438,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
         }
         bottomSheetBinding.min60.setOnClickListener {
             Toast.makeText(baseContext, "Music will stop after 60 minutes", Toast.LENGTH_SHORT).show()
-            binding.btnTimerPA.setColorFilter(ContextCompat.getColor(this, R.color.purple_500))
+            binding.btnTimerPA.setColorFilter(ContextCompat.getColor(this, R.color.cool_pink))
             min60 = true
             Thread{Thread.sleep((60*60000).toLong())
                 if (min60) exitApp() }.start()
@@ -418,5 +452,10 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
         val jsonFav = GsonBuilder().create().toJson(FavouriteActivity.MusicListFav)
         editor.putString("musicListFav", jsonFav)
         editor.apply()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (musicListPA[songPosition].id == "Unknown" && !isPlaying) exitApp()
     }
 }

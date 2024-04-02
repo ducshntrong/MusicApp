@@ -59,7 +59,7 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="coolBlack" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="themeColor">#1C1C1C</item>
+        <item name="themeColor">#2E2E2E</item>
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/black</item>
@@ -126,7 +126,7 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="coolBlackNav" parent="Theme.MaterialComponents.Light">
-        <item name="themeColor">#1C1C1C</item>
+        <item name="themeColor">#2E2E2E</item>
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/black</item>

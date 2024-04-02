@@ -10,8 +10,10 @@
 <!--    custom colors-->
     <color name="cool_blue">#1171AC</color>
     <color name="cool_purple">#7736D5</color>
-    <color name="cool_green">#036D03</color>
-    <color name="cool_pink">#F50057</color>
+    <color name="cool_green">#276827</color>
+    <color name="cool_pink">#D54A7B</color>
+    <color name="cool_pink2">#F84B89</color>
     <color name="yellow">#FFD600</color>
     <color name="black2">#504F4F</color>
+    <color name="grey">#DAD9D9</color>
 </resources>

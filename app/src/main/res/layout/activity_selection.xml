@@ -47,5 +47,5 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         android:scrollbarThumbVertical="@drawable/scroll_bar_ic"
         android:scrollbars="vertical"
-        android:padding="3dp"/>
+        tools:listitem="@layout/music_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>

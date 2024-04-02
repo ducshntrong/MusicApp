@@ -1,5 +1,6 @@
 package com.example.musicplayer.Activity
 
+import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.graphics.Color
 import android.os.Bundle
@@ -7,11 +8,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.musicplayer.BuildConfig
 import com.example.musicplayer.Model.exitApp
+import com.example.musicplayer.R
 import com.example.musicplayer.databinding.ActivitySettingsBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsBinding
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(MainActivity.currentThemeNav[MainActivity.themeIndex])
@@ -20,11 +23,11 @@ class SettingsActivity : AppCompatActivity() {
         supportActionBar?.title = "Settings"
 
         when(MainActivity.themeIndex){
-            0 -> binding.coolPinkTheme.setBackgroundColor(Color.YELLOW)
-            1 -> binding.coolBlueTheme.setBackgroundColor(Color.YELLOW)
-            2 -> binding.coolPurpleTheme.setBackgroundColor(Color.YELLOW)
-            3 -> binding.coolGreenTheme.setBackgroundColor(Color.YELLOW)
-            4 -> binding.coolBlackTheme.setBackgroundColor(Color.YELLOW)
+            0 -> binding.coolPinkTheme.setIconTintResource(R.color.yellow)
+            1 -> binding.coolBlueTheme.setIconTintResource(R.color.yellow)
+            2 -> binding.coolPurpleTheme.setIconTintResource(R.color.yellow)
+            3 -> binding.coolGreenTheme.setIconTintResource(R.color.yellow)
+            4 -> binding.coolBlackTheme.setIconTintResource(R.color.yellow)
         }
         binding.coolPinkTheme.setOnClickListener { saveTheme(0) }
         binding.coolBlueTheme.setOnClickListener { saveTheme(1) }

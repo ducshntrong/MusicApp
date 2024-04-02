@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_favourite"
     tools:context=".Activity.FavouriteActivity">
 
+
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/themeColor"
-        android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -19,65 +21,99 @@
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:backgroundTint="@android:color/transparent"
             android:contentDescription="@string/back_btn"
+            android:padding="5dp"
             android:src="@drawable/back_ic"
-            app:tint="@color/white"
-            android:padding="5dp"/>
+            app:tint="@color/white" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/favourites_song"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_total_song"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/total_song"
+            android:textColor="#5E5D5D"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btn_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/circle_down_ic"
+                app:tint="#5E5D5D" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <!--                <ImageButton-->
+                <!--                    android:id="@+id/btnShuffle"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:background="@android:color/transparent"-->
+                <!--                    android:contentDescription="@string/shuffle_btn"-->
+                <!--                    app:srcCompat="@drawable/shuffle_ic"-->
+                <!--                    app:tint="?attr/themeColor"-->
+                <!--                    android:layout_marginEnd="10dp"-->
+                <!--                    android:layout_centerVertical="true"-->
+                <!--                    android:layout_toStartOf="@id/btnPausePlay"/>-->
+
+                <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                    android:id="@+id/btnShuffle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@string/shuffle_btn"
+                    app:backgroundTint="?attr/themeColor"
+                    app:icon="@drawable/shuffle_ic"
+                    app:iconSize="35dp"
+                    app:iconTint="@color/white" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFavourite"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="@string/favourites_btn"
-            android:gravity="center"
-            android:text="@string/favourites_btn"
-            android:textColor="@color/white"
-            android:textSize="25dp"
-            android:textStyle="bold" />
+            tools:listitem="@layout/favourite_view" />
+
     </LinearLayout>
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvFavourite"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        android:scrollbarThumbVertical="@drawable/scroll_bar_ic"
-        android:scrollbars="vertical"
-        android:padding="5dp"/>
-
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/btnShuffle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        app:icon="@drawable/shuffle_ic"
-        app:iconSize="35dp"
-        app:iconTint="?attr/themeColor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.9"
-        app:strokeWidth="2dp"
-        app:strokeColor="?attr/themeColor"/>
 
     <TextView
         android:id="@+id/instructionFV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/favourite_note"
-        app:layout_constraintBottom_toBottomOf="@+id/rvFavourite"
-        app:layout_constraintEnd_toEndOf="@+id/rvFavourite"
-        app:layout_constraintStart_toStartOf="@+id/rvFavourite"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout5"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:gravity="center"
         android:textColor="?attr/themeColor"
-        android:textSize="20sp"
-        android:gravity="center"/>
+        android:visibility="visible"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

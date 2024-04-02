@@ -24,47 +24,54 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:gravity="center">
 
-        <com.google.android.material.imageview.ShapeableImageView
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/coolPinkTheme"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/circle_ic"
-            android:tint="@color/cool_pink"/>
-
-        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/check_ic"
+            android:backgroundTint="@color/cool_pink"
+            app:iconTint="@color/cool_pink"
+            android:layout_margin="10dp"
+            app:iconSize="30dp"/>
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/coolBlueTheme"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/circle_ic"
-            android:tint="@color/cool_blue"/>
-
-        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/check_ic"
+            android:backgroundTint="@color/cool_blue"
+            app:iconTint="@color/cool_blue"
+            android:layout_margin="10dp"
+            app:iconSize="30dp"/>
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/coolPurpleTheme"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/circle_ic"
-            android:tint="@color/purple_500"/>
-
-        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/check_ic"
+            android:backgroundTint="@color/cool_purple"
+            app:iconTint="@color/cool_purple"
+            android:layout_margin="10dp"
+            app:iconSize="30dp"/>
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/coolGreenTheme"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/circle_ic"
-            android:tint="@color/cool_green"/>
-
-        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/check_ic"
+            android:backgroundTint="@color/cool_green"
+            app:iconTint="@color/cool_green"
+            android:layout_margin="10dp"
+            app:iconSize="30dp"/>
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/coolBlackTheme"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/circle_ic"
-            android:tint="@color/black"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/check_ic"
+            android:backgroundTint="@color/black"
+            app:iconTint="@color/black"
+            android:layout_margin="10dp"
+            app:iconSize="30dp"/>
     </LinearLayout>
 
     <LinearLayout

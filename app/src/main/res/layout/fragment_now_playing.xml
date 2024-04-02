@@ -6,11 +6,11 @@
     android:layout_height="wrap_content"
     tools:context=".NowPlayingFragment"
     android:orientation="horizontal"
-    android:background="?attr/themeColor">
+    android:background="@drawable/bottom_now_playing">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/songImgNP"
-        android:layout_width="70dp"
+        android:layout_width="65dp"
         android:layout_height="55dp"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="5dp"

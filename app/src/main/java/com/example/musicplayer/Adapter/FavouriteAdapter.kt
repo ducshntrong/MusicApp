@@ -8,15 +8,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.musicplayer.Model.Music
 import com.example.musicplayer.Activity.PlayerActivity
+import com.example.musicplayer.Model.Music
+import com.example.musicplayer.Model.formatDuration
 import com.example.musicplayer.R
 import com.example.musicplayer.databinding.FavouriteViewBinding
 
 class FavouriteAdapter(private val context: Context, private var musicFavList: ArrayList<Music>) :RecyclerView.Adapter<FavouriteAdapter.FavouriteHolder>() {
     inner class FavouriteHolder(binding: FavouriteViewBinding): RecyclerView.ViewHolder(binding.root) {
-        val songNameFav = binding.tvSongNameFav
-        val imgSongFav = binding.imgSongFav
+        val songNameFav = binding.songName
+        val imgSongFav = binding.imgMusicView
+        val artistFav = binding.songArtist
+        val durationFav = binding.songDuration
         val root = binding.root
     }
 
@@ -36,6 +39,8 @@ class FavouriteAdapter(private val context: Context, private var musicFavList: A
     override fun onBindViewHolder(holder: FavouriteHolder, position: Int) {
         holder.songNameFav.text = musicFavList[position].title
         holder.songNameFav.isSelected = true
+        holder.artistFav.text = musicFavList[position].artist
+        holder.durationFav.text = formatDuration(musicFavList[position].duration)
         Glide.with(context)
             .load(musicFavList[position].artUri)
             .apply(RequestOptions().placeholder(R.drawable.music_player_icon_splash)).centerCrop()

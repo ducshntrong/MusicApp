@@ -23,7 +23,7 @@ class MusicAdapter(private val context: Context, private var musicList: ArrayLis
     RecyclerView.Adapter<MusicAdapter.MusicViewHolder>() {
     class MusicViewHolder(binding: MusicViewBinding): RecyclerView.ViewHolder(binding.root) {
         val songName = binding.songName
-        val songAlbum = binding.songAlbumMV
+        val songAlbum = binding.songArtist
         val imgMusicView = binding.imgMusicView
         val duration = binding.songDuration
         val root = binding.root
@@ -44,7 +44,7 @@ class MusicAdapter(private val context: Context, private var musicList: ArrayLis
 
     override fun onBindViewHolder(holder: MusicViewHolder, position: Int) {
         holder.songName.text = musicList[position].title
-        holder.songAlbum.text = musicList[position].album
+        holder.songAlbum.text = musicList[position].artist
         holder.duration.text = formatDuration(musicList[position].duration)
         Glide.with(context).
             load(musicList[position].artUri).
@@ -67,7 +67,7 @@ class MusicAdapter(private val context: Context, private var musicList: ArrayLis
                             4 -> holder.root.setBackgroundColor(ContextCompat.getColor(context, R.color.black2))
                         }
                     }else{
-                        holder.root.setBackgroundColor(ContextCompat.getColor(context, R.color.white))
+                        holder.root.setBackgroundColor(ContextCompat.getColor(context, R.color.grey))
                     }
                 }
             }

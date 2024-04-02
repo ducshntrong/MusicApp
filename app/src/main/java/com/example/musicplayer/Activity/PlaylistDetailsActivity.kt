@@ -6,12 +6,14 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.musicplayer.Adapter.MusicAdapter
+import com.example.musicplayer.Model.applyClickAnimation
 import com.example.musicplayer.Model.checkPlaylist
 import com.example.musicplayer.R
 import com.example.musicplayer.databinding.ActivityPlaylistDetailsBinding
@@ -30,37 +32,43 @@ class PlaylistDetailsActivity : AppCompatActivity() {
 
         initializeLayout()
         binding.btnBack.setOnClickListener { finish() }
-        binding.btnShuffle.setOnClickListener {
-            val i = Intent(this@PlaylistDetailsActivity, PlayerActivity::class.java)
-            val bundle = Bundle()
-            bundle.putInt("index", 0)
-            bundle.putString("class", "PlaylistDetailsShuffle")
-            i.putExtras(bundle)
-            startActivity(i)
+        applyClickAnimation(binding.btnShuffle) {
+            if (PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist.isNotEmpty()){
+                val i = Intent(this@PlaylistDetailsActivity, PlayerActivity::class.java)
+                val bundle = Bundle()
+                bundle.putInt("index", 0)
+                bundle.putString("class", "PlaylistDetailsShuffle")
+                i.putExtras(bundle)
+                startActivity(i)
+            }else{
+                Toast.makeText(this, "Your playlist is currently empty!!", Toast.LENGTH_SHORT).show()}
         }
         binding.addBtnPD.setOnClickListener {
             val i = Intent(this@PlaylistDetailsActivity, SelectionActivity::class.java)
             startActivity(i)
         }
 
-        binding.removeAllPD.setOnClickListener {
-            val dialog = AlertDialog.Builder(this)
-            dialog.apply {
-                setTitle("Remove All Songs")
-                setMessage("Do you want to remove all songs from playlist?")
-                setNegativeButton("No"){ dialogInterface: DialogInterface, _: Int ->
-                    dialogInterface.dismiss()
+        applyClickAnimation(binding.removeAllPD){
+            if (PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist.isNotEmpty()){
+                val dialog = AlertDialog.Builder(this)
+                dialog.apply {
+                    setTitle("Remove All Songs")
+                    setMessage("Do you want to remove all songs from playlist?")
+                    setNegativeButton("No"){ dialogInterface: DialogInterface, _: Int ->
+                        dialogInterface.dismiss()
+                    }
+                    setPositiveButton("Yes"){ _: DialogInterface, _: Int ->
+                        PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist.clear()
+                        musicAdapter.setListMusic(PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist)
+                    }
+                    setCancelable(true)
                 }
-                setPositiveButton("Yes"){ _: DialogInterface, _: Int ->
-                   PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist.clear()
-                    musicAdapter.setListMusic(PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist)
-                }
-                setCancelable(true)
-            }
-            val customDialog = dialog.create()
-            customDialog.show()
-            customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED)
-            customDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.RED)
+                val customDialog = dialog.create()
+                customDialog.show()
+                customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED)
+                customDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.RED)
+            }else{
+                Toast.makeText(this, "Your playlist is currently empty!!", Toast.LENGTH_SHORT).show()}
         }
     }
 
@@ -80,9 +88,9 @@ class PlaylistDetailsActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     private fun setLayout(){
         binding.tvPlaylistName.text = PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].name
-        binding.tvTotalSong.text = "Total 10 Songs"
+        binding.tvTotalSong.text = "Total ${PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist.size} Songs"
         binding.tvCreateOn.text = "Create On: ${PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].createOn}"
-        binding.tvCreateBy.text = "-- ${PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].createBy}"
+        binding.tvCreateBy.text = "-- ${PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].createBy} --"
         if (musicAdapter.itemCount > 0){
             Glide.with(this).
             load(PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist[0].artUri).

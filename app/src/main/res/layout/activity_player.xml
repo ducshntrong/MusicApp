@@ -24,7 +24,7 @@
             android:background="@android:color/transparent"
             android:contentDescription="@string/back_btn"
             app:srcCompat="@drawable/back_ic"
-            app:tint="@color/black" />
+            app:tint="@color/white" />
 
         <TextView
             android:id="@+id/textView"
@@ -33,7 +33,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/world_of_music"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             tools:ignore="NestedWeights"/>
@@ -42,19 +42,19 @@
             android:id="@+id/img_btn_fav"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="17dp"
+            android:layout_marginEnd="15dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/favourites_btn"
             app:srcCompat="@drawable/favourite_empty_ic"
-            app:tint="@android:color/holo_red_dark" />
+            app:tint="@color/white" />
     </LinearLayout>
 
 
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/img_song"
-        android:layout_width="290dp"
-        android:layout_height="290dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_margin="10dp"
         android:padding="5dp"
         app:civ_border_width="1dp"
@@ -70,10 +70,13 @@
         android:layout_marginHorizontal="20dp"
         android:text="@string/song_name"
         android:gravity="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:layout_weight="1"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:ellipsize="marquee"/>
 
     <TextView
         android:id="@+id/tv_Artist"
@@ -82,24 +85,28 @@
         android:layout_marginHorizontal="20dp"
         android:text="@string/artist"
         android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="17sp" />
+        android:textColor="#BCB7B7"
+        android:textSize="17sp"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:ellipsize="marquee"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_weight="1"
         android:paddingTop="10dp">
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <ImageButton
             android:id="@+id/btnPreviou"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:icon="@drawable/skip_previous_ic"
-            app:iconSize="40dp"/>
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/skip_previous_ic"
+            app:tint="@color/white" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/btnPausePlay"
@@ -107,17 +114,17 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             app:icon="@drawable/pause_ic"
-            app:shapeAppearanceOverlay="@style/curved"
-            android:backgroundTint="@android:color/holo_red_light"
-            app:tint="@color/white"
-            app:iconSize="35dp"/>
+            app:iconTint="@color/white"
+            app:iconSize="40dp"
+            app:backgroundTint="?attr/themeColor" />
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <ImageButton
             android:id="@+id/btnNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:icon="@drawable/skip_next_ic"
-            app:iconSize="40dp" />
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/skip_next_ic"
+            app:tint="@color/white" />
     </LinearLayout>
 
     <LinearLayout
@@ -133,7 +140,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/start_tv"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="15sp"/>
 
 
@@ -142,6 +149,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:progressTint="@color/white"
+            android:thumbTint="@color/white"
             tools:ignore="NestedWeights" />
 
         <TextView
@@ -149,7 +158,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/end_tv"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="15sp"/>
     </LinearLayout>
 
@@ -167,7 +176,7 @@
             android:background="@android:color/transparent"
             android:contentDescription="@string/repeat_btn"
             app:srcCompat="@drawable/repeat_ic"
-            app:tint="@android:color/holo_red_dark"
+            app:tint="@color/white"
             android:layout_weight="1"/>
 
         <ImageButton
@@ -178,7 +187,7 @@
             android:background="@android:color/transparent"
             android:contentDescription="@string/equalizer_btn"
             app:srcCompat="@drawable/equalizer_ic"
-            app:tint="@android:color/holo_red_dark"
+            app:tint="@color/white"
             android:layout_weight="1"/>
 
         <ImageButton
@@ -189,7 +198,7 @@
             android:background="@android:color/transparent"
             android:contentDescription="@string/timer_btn"
             app:srcCompat="@drawable/timer_ic"
-            app:tint="@android:color/holo_red_dark"
+            app:tint="@color/white"
             android:layout_weight="1"/>
 
         <ImageButton
@@ -200,7 +209,7 @@
             android:background="@android:color/transparent"
             android:contentDescription="@string/share_btn"
             app:srcCompat="@drawable/share_ic"
-            app:tint="@android:color/holo_red_dark"
+            app:tint="@color/white"
             android:layout_weight="1"/>
 
     </LinearLayout>

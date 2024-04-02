@@ -2,6 +2,7 @@
     <string name="app_name">Music Player</string>
     <string name="shuffle_btn">Shuffle</string>
     <string name="favourites_btn">Favourites</string>
+    <string name="favourites_song">Favorite Songs</string>
     <string name="playlist_btn">Playlists</string>
     <string name="total_song">Total Songs</string>
     <string name="world_of_music">World of music</string>
