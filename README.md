@@ -52,6 +52,7 @@ Download apk: https://www.mediafire.com/file/96uffgq54zeymth/MusicApp.apk/file
     <td><img src="screenshots/img12.jpg"/></td>
     <td><img src="screenshots/img13.jpg"/></td>
   </tr>
+  
 # Features
 - Play/Pause Audio Using EarPhones
 - Play Next Feature (i.e. Now You Can Schedule Upcoming Songs)
