@@ -1,49 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="75dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="4dp"
-    android:background="@color/grey">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/imgMusicView"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        app:srcCompat="@drawable/music_player_icon_splash" />
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:id="@+id/itemFavParent"
+        android:layout_height="75dp">
 
-    <TextView
-        android:id="@+id/songName"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_toEndOf="@id/imgMusicView"
-        android:layout_toStartOf="@id/songDuration"
-        android:text="@string/song_name"
-        android:textColor="@color/black"
-        android:layout_marginStart="5dp"
-        android:gravity="center_vertical"
-        android:textStyle="bold"
-        android:singleLine="true"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:padding="4dp"
+            android:background="@color/grey">
 
-    <TextView
-        android:id="@+id/songArtist"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_toEndOf="@id/imgMusicView"
-        android:layout_toStartOf="@id/songDuration"
-        android:text="@string/artist"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center_vertical"
-        android:singleLine="true"/>
+            <ImageView
+                android:id="@+id/imgMusicView"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                app:srcCompat="@drawable/music_player_icon_splash" />
 
-    <TextView
-        android:id="@+id/songDuration"
-        android:layout_width="50dp"
-        android:layout_height="match_parent"
-        android:text="@string/start_tv"
-        android:layout_alignParentEnd="true"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:layout_marginHorizontal="5dp"/>
+            <TextView
+                android:id="@+id/songName"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_toEndOf="@id/imgMusicView"
+                android:layout_toStartOf="@id/songDuration"
+                android:text="@string/song_name"
+                android:textColor="@color/black"
+                android:layout_marginStart="5dp"
+                android:gravity="center_vertical"
+                android:textStyle="bold"
+                android:singleLine="true"/>
+
+            <TextView
+                android:id="@+id/songArtist"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_toEndOf="@id/imgMusicView"
+                android:layout_toStartOf="@id/songDuration"
+                android:text="@string/artist"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="30dp"
+                android:gravity="center_vertical"
+                android:singleLine="true"/>
+
+            <TextView
+                android:id="@+id/songDuration"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:text="@string/start_tv"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="5dp"/>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
 </RelativeLayout>

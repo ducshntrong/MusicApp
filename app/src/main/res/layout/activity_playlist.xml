@@ -23,6 +23,8 @@
             android:backgroundTint="@android:color/transparent"
             android:contentDescription="@string/back_btn"
             android:src="@drawable/back_ic"
+            android:clickable="true"
+            android:focusable="true"
             app:tint="@color/white" />
 
         <TextView

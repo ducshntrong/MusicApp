@@ -20,7 +20,7 @@ class FavouriteAdapter(private val context: Context, private var musicFavList: A
         val imgSongFav = binding.imgMusicView
         val artistFav = binding.songArtist
         val durationFav = binding.songDuration
-        val root = binding.root
+        val root = binding.itemFavParent
     }
 
     fun musicListFav(musicFavList: ArrayList<Music>){

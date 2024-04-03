@@ -26,6 +26,8 @@ class MusicAdapter(private val context: Context, private var musicList: ArrayLis
         val songAlbum = binding.songArtist
         val imgMusicView = binding.imgMusicView
         val duration = binding.songDuration
+        val cardViewParent = binding.itemMusicParent
+        val cardView = binding.itemMusic
         val root = binding.root
     }
 
@@ -52,27 +54,27 @@ class MusicAdapter(private val context: Context, private var musicList: ArrayLis
             into(holder.imgMusicView)
         when{
             playlistDetails -> {
-                holder.root.setOnClickListener {
+                holder.cardViewParent.setOnClickListener {
                     sendIntent("PlaylistDetailsAdapter", position)
                 }
             }
             selectionActivity -> {
-                holder.root.setOnClickListener {
+                holder.cardViewParent.setOnClickListener {
                     if (addSong(musicList[position])){
                         when(MainActivity.themeIndex){
-                            0 -> holder.root.setBackgroundColor(ContextCompat.getColor(context, R.color.cool_pink))
-                            1 -> holder.root.setBackgroundColor(ContextCompat.getColor(context, R.color.cool_blue))
-                            2 -> holder.root.setBackgroundColor(ContextCompat.getColor(context, R.color.cool_purple))
-                            3 -> holder.root.setBackgroundColor(ContextCompat.getColor(context, R.color.cool_green))
-                            4 -> holder.root.setBackgroundColor(ContextCompat.getColor(context, R.color.black2))
+                            0 -> holder.cardView.setBackgroundColor(ContextCompat.getColor(context, R.color.cool_pink))
+                            1 -> holder.cardView.setBackgroundColor(ContextCompat.getColor(context, R.color.cool_blue))
+                            2 -> holder.cardView.setBackgroundColor(ContextCompat.getColor(context, R.color.cool_purple))
+                            3 -> holder.cardView.setBackgroundColor(ContextCompat.getColor(context, R.color.cool_green))
+                            4 -> holder.cardView.setBackgroundColor(ContextCompat.getColor(context, R.color.black2))
                         }
                     }else{
-                        holder.root.setBackgroundColor(ContextCompat.getColor(context, R.color.grey))
+                        holder.cardView.setBackgroundColor(ContextCompat.getColor(context, R.color.grey))
                     }
                 }
             }
             else ->{
-                holder.root.setOnClickListener {
+                holder.cardViewParent.setOnClickListener {
                     when{//ktr xem gtri là true hay false (có search hay k search)
                         MainActivity.search -> sendIntent("MusicAdapterSearch", position)
                         musicList[position].id == PlayerActivity.nowPlayingId ->
