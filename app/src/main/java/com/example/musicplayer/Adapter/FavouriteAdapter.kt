@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -52,7 +53,10 @@ class FavouriteAdapter(private val context: Context, private var musicFavList: A
             bundle.putInt("index", position)
             bundle.putString("class", "FavouriteAdapter")
             i.putExtras(bundle)
-            context.startActivity(i)
+            val activityOptions = ActivityOptionsCompat.makeCustomAnimation(
+                context, R.anim.slide_up, R.anim.fade_out
+            )
+            context.startActivity(i, activityOptions.toBundle())
         }
     }
 }

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -94,7 +95,10 @@ class MusicAdapter(private val context: Context, private var musicList: ArrayLis
         bundle.putInt("index", pos)
         bundle.putString("class", ref)
         i.putExtras(bundle)
-        context.startActivity(i)
+        val activityOptions = ActivityOptionsCompat.makeCustomAnimation(
+            context, R.anim.slide_up, R.anim.fade_out
+        )
+        context.startActivity(i, activityOptions.toBundle())
     }
 
     //thêm bài hát vào ds phát hiện tại

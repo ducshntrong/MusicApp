@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -62,7 +63,10 @@ class NowPlayingFragment : Fragment() {
             bundle.putInt("index", PlayerActivity.songPosition)
             bundle.putString("class", "NowPlaying")
             i.putExtras(bundle)
-            startActivity(i)
+            val activityOptions = ActivityOptionsCompat.makeCustomAnimation(
+                requireContext(), R.anim.slide_up, R.anim.fade_out
+            )
+            startActivity(i, activityOptions.toBundle())
         }
     }
 

@@ -6,10 +6,13 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.media.AudioManager
 import android.media.MediaPlayer
-import android.os.*
+import android.os.Binder
+import android.os.Build
+import android.os.Handler
+import android.os.IBinder
+import android.os.Looper
 import android.support.v4.media.session.MediaSessionCompat
 import androidx.core.app.NotificationCompat
-import com.example.musicplayer.Activity.FavouriteActivity
 import com.example.musicplayer.Activity.MainActivity
 import com.example.musicplayer.Activity.PlayerActivity
 import com.example.musicplayer.Model.formatDuration
@@ -85,10 +88,10 @@ class MusicService: Service(), AudioManager.OnAudioFocusChangeListener {
         }
         //baseContext: là ngữ cảnh hoạt động của ứng dụng
         val notification = NotificationCompat.Builder(baseContext, ApplicationClass.CHANNEL_ID)
+            .setSmallIcon(R.drawable.music_note_ic)
             .setContentIntent(contentIntent)//set click vào Notification
             .setContentTitle(PlayerActivity.musicListPA[PlayerActivity.songPosition].title)
             .setContentText(PlayerActivity.musicListPA[PlayerActivity.songPosition].artist)
-            .setSmallIcon(R.drawable.music_note_ic)
             .setLargeIcon(imgSong)
             //hiển thị các điều khiển nhạc trong thông báo và cho phép người dùng tương tác với trình phát nhạc từ thông báo.
             .setStyle(androidx.media.app.NotificationCompat.MediaStyle().setMediaSession(mediaSession.sessionToken))

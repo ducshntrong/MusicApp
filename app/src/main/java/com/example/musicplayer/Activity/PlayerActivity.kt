@@ -84,8 +84,9 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
             else playMusic()
         }
 
-        applyClickAnimation(binding.btnNext){nextPreviousSong(true)}
-        applyClickAnimation(binding.btnPreviou){nextPreviousSong(false)}
+        applyClickAnimation(this, binding.btnNext){nextPreviousSong(true)}
+        applyClickAnimation(this, binding.btnPreviou){nextPreviousSong(false)}
+
         binding.imgBtnBack.setOnClickListener { finish() }
 
         //sẽ đặt trình nghe khi nhấp chuột trên thanh seekbar để thay đổi tiến trình của seekbar khi người dùng tương thích với nó.
@@ -104,7 +105,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
             override fun onStopTrackingTouch(seekBar: SeekBar?) = Unit
         })
 
-        applyClickAnimation(binding.btnRepeatPA){
+        applyClickAnimation(this, binding.btnRepeatPA){
             if (!repeat){
                 repeat = true
                 binding.btnRepeatPA.setColorFilter(ContextCompat.getColor(this, R.color.cool_pink))
@@ -114,7 +115,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
             }
         }
 
-        applyClickAnimation(binding.btnEqualizerPA){
+        applyClickAnimation(this, binding.btnEqualizerPA){
             try {
                 //Intent được tạo để mở cài đặt bộ điều chỉnh âm thanh (Equalizer) cho phiên bản âm thanh đang phát
                 val eqIntent = Intent(AudioEffect.ACTION_DISPLAY_AUDIO_EFFECT_CONTROL_PANEL)
@@ -127,7 +128,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
                 Toast.makeText(this, "Equalizer Feature not Supported!!", Toast.LENGTH_SHORT).show()}
         }
 
-        applyClickAnimation(binding.btnTimerPA){
+        applyClickAnimation(this, binding.btnTimerPA){
             //Biến timer sẽ là true nếu ít nhất 1 trong 3 biến min15, min30, min60 có gtri là true.
             val timer = min15 || min30 || min60
             //ktra nếu timer là false, tức là k có bộ đếm tgian nào được thiết lập, thì showBottomSheetDialog() được gọi
@@ -158,7 +159,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
             }
         }
 
-        applyClickAnimation(binding.btnSharePA) {
+        applyClickAnimation(this, binding.btnSharePA) {
             val shareIntent = Intent() //tạo đối dượng Intent
             shareIntent.action = Intent.ACTION_SEND //gán hành động mục đích của intent là chia sẻ.
             shareIntent.type = "audio/*" //chỉ định rằng dữ liệu sẽ được chia sẻ là âm thanh.
@@ -448,6 +449,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
 
     override fun onPause() {
         super.onPause()
+        overridePendingTransition(R.anim.fade_in, R.anim.slide_down)
         val editor = getSharedPreferences("Favourite", Context.MODE_PRIVATE).edit()
         val jsonFav = GsonBuilder().create().toJson(FavouriteActivity.MusicListFav)
         editor.putString("musicListFav", jsonFav)

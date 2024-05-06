@@ -1,11 +1,12 @@
 package com.example.musicplayer.Model
 
-import android.animation.ObjectAnimator
-import android.animation.PropertyValuesHolder
+import android.animation.AnimatorInflater
+import android.content.Context
 import android.media.MediaMetadataRetriever
 import android.widget.ImageButton
 import com.example.musicplayer.Activity.FavouriteActivity
 import com.example.musicplayer.Activity.PlayerActivity
+import com.example.musicplayer.R
 import java.io.File
 import java.util.concurrent.TimeUnit
 import kotlin.system.exitProcess
@@ -104,14 +105,16 @@ fun checkPlaylist(playlist: ArrayList<Music>): ArrayList<Music> {
 
 //tham số clickHandler kiểu () -> Unit cho hàm applyClickAnimation.
 // Điều này cho phép chúng ta truyền một xử lý sự kiện riêng cho mỗi nút.
-fun applyClickAnimation(button: ImageButton, clickHandler: () -> Unit) {
-    val clickAnimation = ObjectAnimator.ofPropertyValuesHolder(
-        button,
-        PropertyValuesHolder.ofFloat("scaleX", 0.9f, 1.0f),
-        PropertyValuesHolder.ofFloat("scaleY", 0.9f, 1.0f)
-    )
+fun applyClickAnimation(context: Context, button: ImageButton, clickHandler: () -> Unit) {
+//    val clickAnimation = ObjectAnimator.ofPropertyValuesHolder(
+//        button,
+//        PropertyValuesHolder.ofFloat("scaleX", 0.9f, 1.0f),
+//        PropertyValuesHolder.ofFloat("scaleY", 0.9f, 1.0f)
+//    )
+    val mAnimator = AnimatorInflater.loadAnimator(context, R.animator.button_pressed)
     button.setOnClickListener {
-        clickAnimation.start()
+        mAnimator.setTarget(it)
+        mAnimator.start()
         clickHandler.invoke()
     }
 }

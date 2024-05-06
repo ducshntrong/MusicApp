@@ -32,7 +32,7 @@ class PlaylistDetailsActivity : AppCompatActivity() {
 
         initializeLayout()
         binding.btnBack.setOnClickListener { finish() }
-        applyClickAnimation(binding.btnShuffle) {
+        applyClickAnimation(this, binding.btnShuffle) {
             if (PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist.isNotEmpty()){
                 val i = Intent(this@PlaylistDetailsActivity, PlayerActivity::class.java)
                 val bundle = Bundle()
@@ -48,7 +48,7 @@ class PlaylistDetailsActivity : AppCompatActivity() {
             startActivity(i)
         }
 
-        applyClickAnimation(binding.removeAllPD){
+        applyClickAnimation(this, binding.removeAllPD){
             if (PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist.isNotEmpty()){
                 val dialog = AlertDialog.Builder(this)
                 dialog.apply {
