@@ -10,7 +10,7 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/songImgNP"
-        android:layout_width="65dp"
+        android:layout_width="60dp"
         android:layout_height="55dp"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="5dp"
@@ -23,6 +23,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_weight="1"
+        android:layout_marginEnd="5dp"
         android:gravity="center">
 
         <TextView
@@ -32,7 +33,7 @@
             android:gravity="center_vertical"
             android:text="@string/song_name"
             android:textColor="@color/white"
-            android:textSize="17sp"
+            android:textSize="15sp"
             android:textStyle="bold"
             android:layout_gravity="center"
             android:marqueeRepeatLimit="marquee_forever"
@@ -46,31 +47,61 @@
             android:gravity="center_vertical"
             android:text="@string/artist"
             android:textColor="@color/white"
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:layout_gravity="center"
             android:marqueeRepeatLimit="marquee_forever"
             android:singleLine="true"
             android:ellipsize="marquee"/>
     </LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+<!--    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton-->
+<!--        android:id="@+id/btnPlayPauseNP"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:backgroundTint="?attr/themeColor"-->
+<!--        app:icon="@drawable/play_ic"-->
+<!--        app:iconSize="40dp"-->
+<!--        app:iconTint="@color/white"-->
+<!--        android:layout_margin="5dp"/>-->
+
+<!--    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton-->
+<!--        android:id="@+id/btnNextNP"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:backgroundTint="?attr/themeColor"-->
+<!--        app:icon="@drawable/skip_next_ic"-->
+<!--        app:iconSize="40dp"-->
+<!--        app:iconTint="@color/white"-->
+<!--        android:layout_margin="5dp"/>-->
+
+    <ImageButton
+        android:id="@+id/img_btn_fav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:src="@drawable/favourite_empty_ic"
+        android:layout_gravity="center_vertical"
+        app:tint="@color/white"
+        android:layout_marginEnd="10dp"/>
+
+    <ImageButton
         android:id="@+id/btnPlayPauseNP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:backgroundTint="?attr/themeColor"
-        app:icon="@drawable/play_ic"
-        app:iconSize="40dp"
-        app:iconTint="@color/white"
-        android:layout_margin="5dp"/>
+        android:background="@android:color/transparent"
+        android:src="@drawable/play_circle_outline_24"
+        android:layout_gravity="center_vertical"
+        app:tint="@color/white"
+        android:layout_marginEnd="3dp"/>
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+    <ImageButton
         android:id="@+id/btnNextNP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:backgroundTint="?attr/themeColor"
-        app:icon="@drawable/skip_next_ic"
-        app:iconSize="40dp"
-        app:iconTint="@color/white"
-        android:layout_margin="5dp"/>
+        android:background="@android:color/transparent"
+        android:src="@drawable/skip_next_ic"
+        android:layout_gravity="center_vertical"
+        app:tint="@color/white"
+        android:layout_marginEnd="5dp"/>
 
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.musicplayer.Adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -22,6 +23,7 @@ class PlaylistAdapter(private val context: Context, private var musicPlayList: A
         val root = binding.root
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setMusicPlaylist(musicPlayList: ArrayList<Playlist>){
         this.musicPlayList = musicPlayList
         notifyDataSetChanged()

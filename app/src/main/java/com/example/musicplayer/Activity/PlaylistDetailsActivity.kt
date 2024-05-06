@@ -20,7 +20,7 @@ import com.example.musicplayer.databinding.ActivityPlaylistDetailsBinding
 
 class PlaylistDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPlaylistDetailsBinding
-    lateinit var musicAdapter: MusicAdapter
+    private lateinit var musicAdapter: MusicAdapter
     companion object{
         var currentPlaylistPos: Int = -1
     }

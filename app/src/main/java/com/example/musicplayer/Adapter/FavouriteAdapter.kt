@@ -1,5 +1,6 @@
 package com.example.musicplayer.Adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -24,6 +25,7 @@ class FavouriteAdapter(private val context: Context, private var musicFavList: A
         val root = binding.itemFavParent
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun musicListFav(musicFavList: ArrayList<Music>){
         this.musicFavList = musicFavList
         notifyDataSetChanged()

@@ -159,14 +159,14 @@ class MusicService: Service(), AudioManager.OnAudioFocusChangeListener {
             // đang có các app khác yêu cầu quyền kiểm soát âm thanh.
             //pause music
             PlayerActivity.binding.btnPausePlay.setIconResource(R.drawable.play_ic)
-            NowPlayingFragment.binding.btnPlayPauseNP.setIconResource(R.drawable.play_ic)
+            NowPlayingFragment.binding.btnPlayPauseNP.setImageResource(R.drawable.play_circle_outline_24)
             showNotification(R.drawable.play_ic)
             PlayerActivity.isPlaying = false
             mediaPlayer?.pause()
         }else{// nghĩa là ứng dụng đã nhận lại quyền kiểm soát âm thanh
             //play music
             PlayerActivity.binding.btnPausePlay.setIconResource(R.drawable.pause_ic)
-            NowPlayingFragment.binding.btnPlayPauseNP.setIconResource(R.drawable.pause_ic)
+            NowPlayingFragment.binding.btnPlayPauseNP.setImageResource(R.drawable.pause_circle_outline_24)
             showNotification(R.drawable.pause_ic)
             PlayerActivity.isPlaying = true
             mediaPlayer?.start()

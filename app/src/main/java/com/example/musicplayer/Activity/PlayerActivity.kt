@@ -175,6 +175,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
             if (isFavourite){
                 isFavourite = false
                 binding.imgBtnFav.setImageResource(R.drawable.favourite_empty_ic)
+                NowPlayingFragment.binding.imgBtnFav.setImageResource(R.drawable.favourite_empty_ic)
                 FavouriteActivity.MusicListFav.removeAt(fIndex)
                 Snackbar.make(
                     findViewById(android.R.id.content),
@@ -183,6 +184,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
             }else{
                 isFavourite = true
                 binding.imgBtnFav.setImageResource(R.drawable.favorite_ic)
+                NowPlayingFragment.binding.imgBtnFav.setImageResource(R.drawable.favorite_ic)
                 binding.imgBtnFav.setColorFilter(ContextCompat.getColor(this, R.color.white))
                 FavouriteActivity.MusicListFav.add(musicListPA[songPosition])
                 Snackbar.make(

@@ -15,9 +15,10 @@ import com.example.musicplayer.R
 import com.example.musicplayer.databinding.ActivityFavouriteBinding
 
 class FavouriteActivity : AppCompatActivity() {
-    lateinit var favouriteAdapter: FavouriteAdapter
+    private lateinit var favouriteAdapter: FavouriteAdapter
 
     companion object{
+        //data MusicListFav dc lấy từ playerActivity khi click nút fav
         var MusicListFav: ArrayList<Music> = ArrayList()
         @SuppressLint("StaticFieldLeak")
         lateinit var binding: ActivityFavouriteBinding
@@ -26,7 +27,7 @@ class FavouriteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setTheme(MainActivity.currentTheme[MainActivity.themeIndex])
         binding = ActivityFavouriteBinding.inflate(layoutInflater)
-        setContentView(binding!!.root)
+        setContentView(binding.root)
 
         MusicListFav = checkPlaylist(MusicListFav)
         initializeLayout()
@@ -56,14 +57,14 @@ class FavouriteActivity : AppCompatActivity() {
 
     private fun playMusic(){
         PlayerActivity.musicService!!.mediaPlayer!!.start()
-        NowPlayingFragment.binding.btnPlayPauseNP.setIconResource(R.drawable.pause_ic)
+        NowPlayingFragment.binding.btnPlayPauseNP.setImageResource(R.drawable.pause_circle_outline_24)
         PlayerActivity.musicService!!.showNotification(R.drawable.pause_ic)
         PlayerActivity.isPlaying = true
     }
 
     private fun pauseMusic(){
         PlayerActivity.musicService!!.mediaPlayer!!.pause()
-        NowPlayingFragment.binding.btnPlayPauseNP.setIconResource(R.drawable.play_ic)
+        NowPlayingFragment.binding.btnPlayPauseNP.setImageResource(R.drawable.play_circle_outline_24)
         PlayerActivity.musicService!!.showNotification(R.drawable.play_ic)
         PlayerActivity.isPlaying = false
     }
