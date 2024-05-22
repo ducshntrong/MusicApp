@@ -1,5 +1,5 @@
 # MusicApp
-Social app is an application that allows users to connect and interact with each other
+Simple music listening application
 # Preview
 Download apk: https://www.mediafire.com/file/i2kcanx6bqzebse/MusicApp.apk/file
 <table style="width:100%">
