@@ -60,18 +60,19 @@ Download apk: https://www.mediafire.com/file/i2kcanx6bqzebse/MusicApp.apk/file
         <td><img src="screenshots/img17.jpg"/></td>
       </tr>
   <table/>
-  
-# Libraries
-- Dynamic size Library: https://github.com/MrNouri/DynamicSizes
-- Circular Image View: https://github.com/hdodenhof/CircleImageView
-- Rounded image View: https://github.com/vinc3m1/RoundedImageView
-- Diagonal Layout in Android: https://github.com/florent37/DiagonalLayout
-- CircularStatusView: https://github.com/3llomi/CircularStatusView
-- StoryView: https://github.com/OMARIHAMZA/StoryView
-- ShimmerRecyclerView: https://github.com/sharish/ShimmerRecyclerView
-- TimeAgo: https://github.com/marlonlom/timeago
-- Glide: https://github.com/bumptech/glide
-- Picasso Library: https://github.com/square/picasso
-- Firebase: https://firebase.google.com/
+
+# Features
+- Play/Pause Audio Using EarPhones
+- Play Next Feature (i.e. Now You Can Schedule Upcoming Songs)
+- Dark Theme(Using Black Theme in Settings)
+- Custom Color Gradient According To Each Song Image
+- Favourite Songs
+- Create & Add Playlists
+- Sleep Timer
+- Audio Booster
+- Built-in System Equalizer
+- Audio Booster or Audio Amplifier
+- Custom Themes
+
 
 For Feedback or Suggestions Mail Me At huynhtrongduc01225445811@gmail.com 
